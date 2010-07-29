@@ -30,7 +30,8 @@
   </scm>
   
   <properties>
-    <scala.version>2.7.4</scala.version>
+    <scala.version>2.8.0</scala.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <repositories>
@@ -55,12 +56,22 @@
       <artifactId>scala-library</artifactId>
       <version>${scala.version}</version>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
   </dependencies>
 
   <build>
+    <finalName>EchoServlet</finalName>
     <sourceDirectory>src/main/scala</sourceDirectory>
+    <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
     <plugins>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
@@ -79,79 +90,6 @@
           </args>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <configuration>
-          <downloadSources>true</downloadSources>
-          <buildcommands>
-            <buildcommand>ch.epfl.lamp.sdt.core.scalabuilder</buildcommand>
-          </buildcommands>
-          <additionalProjectnatures>
-            <projectnature>ch.epfl.lamp.sdt.core.scalanature</projectnature>
-          </additionalProjectnatures>
-          <classpathContainers>
-            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-            <classpathContainer>ch.epfl.lamp.sdt.launching.SCALA_CONTAINER</classpathContainer>
-          </classpathContainers>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.scala-tools</groupId>
-        <artifactId>maven-scala-plugin</artifactId>
-        <configuration>
-          <scalaVersion>${scala.version}</scalaVersion>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-  <distributionManagement>
-    <snapshotRepository>
-      <id>scala-tools.org</id>
-      <url>dav:http://nexus.scala-tools.org/content/repositories/snapshots</url>
-      <uniqueVersion>false</uniqueVersion>
-    </snapshotRepository>
-  </distributionManagement>
-  <profiles>
-    <profile>
-      <id>release</id>
-      <distributionManagement>
-        <repository>
-          <id>scala-tools.org</id>
-          <url>http://nexus.scala-tools.org/content/repositories/releases</url>
-        </repository>
-      </distributionManagement>
-    </profile>
-    <profile>
-      <id>snapshot</id>
-      <distributionManagement>
-        <repository>
-          <id>scala-tools.org</id>
-          <url>http://nexus.scala-tools.org/content/repositories/snapshots</url>
-        </repository>
-      </distributionManagement>
-    </profile>
-    <profile>
-      <id>hudson</id>
-      <distributionManagement>
-        <repository>
-          <id>hudson.scala-tools.org</id>
-          <url>file:///home/scalatools/hudson/www/repo-releases</url>
-        </repository>
-        <snapshotRepository>
-          <id>hudson.scala-tools.org</id>
-          <url>file:///home/scalatools/hudson/www/repo-snapshots</url>
-          <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-        <site>
-          <id>hudson.scala-tools.org</id>
-          <url>file:///home/scalatools/hudson/www/mvnsites-snapshots/liftweb</url>
-        </site>
-      </distributionManagement>
-    </profile>
-  </profiles>
 </project>
