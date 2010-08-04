@@ -17,4 +17,4 @@
 
 package org.agilipo.echo.model
 
-class TagFamily(override val oid: String) extends DomainObject(oid) 
+class DomainObject(val oid: String)

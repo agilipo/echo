@@ -14,8 +14,7 @@
  * limitations under the License. 
  *
  **/
-package org.agilipo.echo
 
-class Concept {
+package org.agilipo.echo.model
 
-}
+class Concept(override val oid: String) extends DomainObject(oid)
