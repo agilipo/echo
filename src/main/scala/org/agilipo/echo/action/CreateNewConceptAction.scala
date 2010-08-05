@@ -15,7 +15,6 @@
  *
  **/
 
-package org.agilipo.echo.model
+package org.agilipo.echo.action
 
-class Entry(override val oid: String) extends DomainObject(oid)
-
+class CreateNewConceptAction(val author: User, val concept: Concept) extends Action

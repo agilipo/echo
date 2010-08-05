@@ -15,6 +15,6 @@
  *
  **/
 
-package org.agilipo.echo.model
+package org.agilipo.echo.action
 
-class Discussion(override val oid: String, val title: String) extends DomainObject(oid)
+class UpdateLabelAction(val author: User, val concept: Concept, val label: String) extends Action

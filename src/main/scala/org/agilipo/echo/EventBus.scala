@@ -15,6 +15,15 @@
  *
  **/
 
-package org.agilipo.echo.model
+package org.agilipo.echo
 
-class Discussion(override val oid: String, val title: String) extends DomainObject(oid)
+object EventBus {
+
+  private val events = Map(
+    "createConceptEvent" -> new CreateConceptEvent
+  )
+
+  def getEvent(val eventId : String) {
+    if(events.contains(eventId)) events(eventId) else null
+
+}

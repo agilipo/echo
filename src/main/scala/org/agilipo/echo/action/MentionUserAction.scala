@@ -17,4 +17,4 @@
 
 package org.agilipo.echo.model
 
-class Discussion(override val oid: String, val title: String) extends DomainObject(oid)
+class MentionUserAction(

@@ -15,6 +15,6 @@
  *
  **/
 
-package org.agilipo.echo.model
+package org.agilipo.echo
 
-class Discussion(override val oid: String, val title: String) extends DomainObject(oid)
+class Event(val eventId : String)
